@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oprosvir <oprosvir@sudent.42.fr>           +#+  +:+       +#+        */
+/*   By: oprosvir <oprosvir@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 22:14:51 by oprosvir          #+#    #+#             */
 /*   Updated: 2024/03/20 17:49:52 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
-t_node	*ft_lstnew(int content)
+t_stack	*ft_lstnew(int content)
 {
-	t_node	*new_node;
+	t_stack	*new_node;
 
-	new_node = (t_node *)malloc(sizeof(t_node));
+	new_node = (t_stack *)malloc(sizeof(t_stack));
 	if (!new_node)
 		return (NULL);
 	new_node->value = content;
@@ -24,15 +24,16 @@ t_node	*ft_lstnew(int content)
 	return (new_node);
 }
 
-void	ft_lstadd_front(t_node **lst, t_node *new_node)
+void ft_lstadd_front(t_stack **lst, t_stack *new_node)
 {
-	if (!new_node)
-		return ;
-	new_node->next = *lst;
-	*lst = new_node;
+    if (new_node)
+    {
+        new_node->next = *lst;
+        *lst = new_node;
+    }
 }
 
-void	print_stack(t_node *stack)
+void	print_stack(t_stack *stack)
 {
 	while (stack != NULL)
 	{
@@ -70,32 +71,3 @@ int	main(int argc, char *argv[])
 	print_stack(stack_a);
 	return (0);
 }
-
-// Implement stack operations here
-void	push(t_node **stack, int value)
-{
-	// Push an element onto the stack
-}
-
-int	pop(t_node **stack)
-{
-	// Pop an element off the stack
-	return (0); // Placeholder return value
-}
-
-void	swap(t_node **stack)
-{
-	// Swap the top two elements of the stack
-}
-
-void	rotate(t_node **stack)
-{
-	// Rotate all elements up by one
-}
-
-void	reverse_rotate(t_node **stack)
-{
-	// Rotate all elements down by one
-}
-
-// You will also need functions to sort the stack and to handle parsing and error-checking of input.
