@@ -15,13 +15,22 @@
 
 # include <stdio.h>
 # include <stdlib.h>
+# include <unistd.h>
+# include <limits.h>
 
 // Define a struct for stack nodes
 typedef struct s_stack
 {
-	int				value;
-	struct s_stack	*next;
+    int				value;
+    struct s_stack	*next;
 }					t_stack;
+
+t_stack *init_stack(int argc, char *argv[]);
+void	ft_putstr_fd(char *s, int fd); ////из libft, убрать
+int	ft_isdigit(int c); //из libft, убрать
+void	ft_lstadd_front(t_stack **lst, t_stack *new_node);
+t_stack	*ft_lstnew(int content);
+int	is_sorted(t_stack *stack);
 
 // Function prototypes for stack operations
 void				push(t_stack **stack, int value);

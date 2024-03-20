@@ -1,0 +1,96 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_init.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/20 22:43:06 by oprosvir          #+#    #+#             */
+/*   Updated: 2024/03/20 22:43:06 by oprosvir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../include/push_swap.h"
+
+void	exit_error(void)
+{
+    ft_putstr_fd("Error\n", 2);
+    exit(EXIT_FAILURE);
+}
+
+int	is_sorted(t_stack *stack)
+{
+    while (stack && stack->next)
+    {
+        if (stack->value > stack->next->value)
+            return (0); // Not sorted
+        stack = stack->next;
+    }
+    return (1); // Sorted
+}
+
+int	ft_atoi(const char *str)
+{
+    long	res;
+    int	sign;
+
+    res = 0;
+    sign = 1;
+    while ((*str >= 9 && *str <= 13) || *str == 32)
+        str++;
+    if (*str == '-' || *str == '+')
+    {
+        if (*str == '-')
+            sign = -1;
+        str++;
+    }
+    while (ft_isdigit(*str)) // Use ft_isdigit to ensure character is a digit
+    {
+        res = res * 10 + (*str - '0');
+        if ((sign == 1 && res > INT_MAX) || (sign == -1 && -res < INT_MIN))
+            exit_error(); // Exit with error if outside integer bounds
+        str++;
+    }
+
+    if (*str != '\0') // If there are remaining characters after number processing
+        exit_error(); // Exit with error if any non-digit characters are found
+
+    return ((int)(res * sign));
+}
+
+// Function to check for duplicates in the stack
+int	check_for_duplicate(t_stack *stack, int value)
+{
+    while (stack != NULL)
+    {
+        if (stack->value == value)
+            return (1); // Duplicate found
+        stack = stack->next;
+    }
+    return (0); // No duplicates
+}
+
+t_stack *init_stack(int argc, char *argv[])
+{
+    t_stack *stack;
+    t_stack *new_node;
+    int i;
+    int value;
+
+    stack = NULL;
+    i = argc - 1;
+    if (argc < 2)
+        exit(EXIT_FAILURE);
+    while (i > 0)
+    {
+        value = ft_atoi(argv[i]);
+        if (check_for_duplicate(stack, value)) // Check for duplicates
+            exit_error();
+        new_node = ft_lstnew(value);
+        if (!new_node)
+            exit(EXIT_FAILURE);
+        ft_lstadd_front(&stack, new_node);
+        i--;
+    }
+    return stack;
+}

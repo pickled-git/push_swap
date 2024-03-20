@@ -12,62 +12,39 @@
 
 #include "../include/push_swap.h"
 
-t_stack	*ft_lstnew(int content)
-{
-	t_stack	*new_node;
-
-	new_node = (t_stack *)malloc(sizeof(t_stack));
-	if (!new_node)
-		return (NULL);
-	new_node->value = content;
-	new_node->next = NULL;
-	return (new_node);
-}
-
-void	ft_lstadd_front(t_stack **lst, t_stack *new_node)
-{
-	if (new_node)
-	{
-		new_node->next = *lst;
-		*lst = new_node;
-	}
-}
-
 void	print_stack(t_stack *stack)
 {
-	while (stack != NULL)
-	{
-		printf("%d\n", stack->value);
-		stack = stack->next;
-	}
+    while (stack != NULL)
+    {
+        printf("%d\n", stack->value);
+        stack = stack->next;
+    }
+}
+ 
+void free_stack(t_stack *stack)
+{
+    t_stack *tmp;
+
+    while (stack)
+    {
+        tmp = stack;
+        stack = stack->next;
+        free(tmp);
+    }
 }
 
 // Your main program logic goes here
 // Parse arguments and fill the stack
 int	main(int argc, char *argv[])
 {
-	t_stack *stack_a;
-	t_stack *stack_b;
-	int i;
-	long int nb;
-	t_stack *new_node;
+    t_stack *stack_a;
 
-	if (argc < 2)
-		exit(EXIT_FAILURE);
-	stack_a = NULL;
-	stack_b = NULL;
-	i = argc - 1;
-	nb = 0;
-	while (i > 0)
-	{
-		nb = atoi(argv[i]);
-		new_node = ft_lstnew(nb);
-		if (!new_node)
-			exit(EXIT_FAILURE);
-		ft_lstadd_front(&stack_a, new_node);
-		i--;
-	}
-	printf("Stack A:\n");
-	print_stack(stack_a);
-	return (0);
+    stack_a = init_stack(argc, argv);
+    if (!is_sorted(stack_a))
+    {
+        printf("Stack A:\n");
+        print_stack(stack_a);
+    }
+    free_stack(stack_a);
+    return (0);
 }
