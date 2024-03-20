@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oprosvir <oprosvir@student.42.fr>           +#+  +:+       +#+        */
+/*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 22:14:51 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/03/20 17:49:52 by oprosvir         ###   ########.fr       */
+/*   Updated: 2024/03/20 19:36:59 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ t_stack	*ft_lstnew(int content)
 	return (new_node);
 }
 
-void ft_lstadd_front(t_stack **lst, t_stack *new_node)
+void	ft_lstadd_front(t_stack **lst, t_stack *new_node)
 {
-    if (new_node)
-    {
-        new_node->next = *lst;
-        *lst = new_node;
-    }
+	if (new_node)
+	{
+		new_node->next = *lst;
+		*lst = new_node;
+	}
 }
 
 void	print_stack(t_stack *stack)
@@ -46,11 +46,11 @@ void	print_stack(t_stack *stack)
 // Parse arguments and fill the stack
 int	main(int argc, char *argv[])
 {
-	t_node		*stack_a;
-	t_node		*stack_b;
-	int			i;
-	long int	nb;
-	t_node		*new_node;
+	t_stack *stack_a;
+	t_stack *stack_b;
+	int i;
+	long int nb;
+	t_stack *new_node;
 
 	if (argc < 2)
 		exit(EXIT_FAILURE);
