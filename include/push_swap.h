@@ -21,8 +21,8 @@
 // Define a struct for stack nodes
 typedef struct s_stack
 {
-	int				value;
-	struct s_stack	*next;
+    int				value;
+    struct s_stack	*next;
 }					t_stack;
 
 t_stack *init_stack(int argc, char *argv[]);

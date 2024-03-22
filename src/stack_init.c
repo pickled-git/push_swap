@@ -34,7 +34,7 @@ int	has_duplicate(t_stack *stack, int value)
     return (0);
 }
 
-t_stack	*init_stack(int argc, char *argv[])
+t_stack *init_stack(int argc, char *argv[])
 {
     t_stack *stack;
     t_stack *new_node;
