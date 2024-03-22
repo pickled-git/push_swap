@@ -6,7 +6,7 @@
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 22:43:06 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/03/20 22:43:06 by oprosvir         ###   ########.fr       */
+/*   Updated: 2024/03/20 23:12:46 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	has_duplicate(t_stack *stack, int value)
     return (0);
 }
 
-t_stack *init_stack(int argc, char *argv[])
+t_stack	*init_stack(int argc, char *argv[])
 {
     t_stack *stack;
     t_stack *new_node;
