@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   stack_exit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/18 22:14:51 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/03/20 19:36:59 by oprosvir         ###   ########.fr       */
+/*   Created: 2024/03/22 18:32:25 by oprosvir          #+#    #+#             */
+/*   Updated: 2024/03/22 18:32:25 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	print_stack(t_stack *stack)
+void free_stack(t_stack *stack)
 {
-    while (stack != NULL)
+    t_stack *tmp;
+
+    while (stack)
     {
-        printf("%d\n", stack->value);
+        tmp = stack;
         stack = stack->next;
+        free(tmp);
     }
 }
 
-int	main(int argc, char *argv[])
+void	print_exit(void)
 {
-    t_stack *stack_a;
+    ft_putstr_fd("Error\n", 2);
+    exit(EXIT_FAILURE);
+}
 
-    stack_a = init_stack(argc, argv);
-    if (!is_sorted(stack_a))
-    {
-        printf("Stack A:\n");
-        print_stack(stack_a);
-    }
-    free_stack(stack_a);
-    return (0);
+void	exit_error(t_stack *stack)
+{
+    if (stack)
+        free_stack(stack);
+    print_exit();
 }

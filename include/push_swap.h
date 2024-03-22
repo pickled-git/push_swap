@@ -26,17 +26,12 @@ typedef struct s_stack
 }					t_stack;
 
 t_stack *init_stack(int argc, char *argv[]);
+t_stack	*stack_new_node(int content);
+void	stack_add_top(t_stack **lst, t_stack *new_node);
+void    free_stack(t_stack *stack);
+void	exit_error(t_stack *stack);
 void	ft_putstr_fd(char *s, int fd); ////из libft, убрать
-int	ft_isdigit(int c); //из libft, убрать
-void	ft_lstadd_front(t_stack **lst, t_stack *new_node);
-t_stack	*ft_lstnew(int content);
 int	is_sorted(t_stack *stack);
-
-// Function prototypes for stack operations
-void				push(t_stack **stack, int value);
-int					pop(t_stack **stack);
-void				swap(t_stack **stack);
-void				rotate(t_stack **stack);
-void				reverse_rotate(t_stack **stack);
+int	parse_arg(const char *str, int *error);
 
 #endif
