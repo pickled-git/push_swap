@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_exit.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/22 18:32:25 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/03/27 11:16:58 by oprosvir         ###   ########.fr       */
+/*   Created: 2023/05/23 00:26:40 by oprosvir          #+#    #+#             */
+/*   Updated: 2024/03/04 12:31:54 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "push_swap.h"
 
-void	free_stack(t_stack *stack)
+char	*ft_strdup(const char *s1)
 {
-	t_stack	*tmp;
+	char	*dup;
+	size_t	len;
 
-	while (stack)
-	{
-		tmp = stack;
-		stack = stack->next;
-		free(tmp);
-	}
-}
-
-void	print_exit(void)
-{
-	ft_putstr_fd("Error\n", 2);
-	exit(EXIT_FAILURE);
-}
-
-void	exit_error(t_stack *stack)
-{
-	if (stack)
-		free_stack(stack);
-	print_exit();
+	len = ft_strlen(s1) + 1;
+	dup = (char *)malloc(len * sizeof(char));
+	if (!dup)
+		return (NULL);
+	ft_memcpy(dup, s1, len);
+	return (dup);
 }

@@ -1,39 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_exit.c                                       :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/22 18:32:25 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/03/27 11:16:58 by oprosvir         ###   ########.fr       */
+/*   Created: 2023/06/11 01:34:48 by oprosvir          #+#    #+#             */
+/*   Updated: 2023/06/11 01:34:48 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "push_swap.h"
+#include <unistd.h>
 
-void	free_stack(t_stack *stack)
+void	ft_putendl_fd(char *s, int fd)
 {
-	t_stack	*tmp;
-
-	while (stack)
+	if (s)
 	{
-		tmp = stack;
-		stack = stack->next;
-		free(tmp);
+		while (*s)
+			write(fd, s++, 1);
+		write(fd, "\n", 1);
 	}
-}
-
-void	print_exit(void)
-{
-	ft_putstr_fd("Error\n", 2);
-	exit(EXIT_FAILURE);
-}
-
-void	exit_error(t_stack *stack)
-{
-	if (stack)
-		free_stack(stack);
-	print_exit();
 }

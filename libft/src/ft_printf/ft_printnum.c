@@ -1,39 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_exit.c                                       :+:      :+:    :+:   */
+/*   ft_printnum.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/22 18:32:25 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/03/27 11:16:58 by oprosvir         ###   ########.fr       */
+/*   Created: 2023/07/03 13:13:47 by oprosvir          #+#    #+#             */
+/*   Updated: 2024/03/04 12:29:46 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "push_swap.h"
 
-void	free_stack(t_stack *stack)
+int	ft_printnum(int n)
 {
-	t_stack	*tmp;
+	long	num;
+	char	c;
+	int		count;
 
-	while (stack)
+	num = (long)n;
+	count = 0;
+	if (num < 0)
 	{
-		tmp = stack;
-		stack = stack->next;
-		free(tmp);
+		write(1, "-", 1);
+		num *= -1;
+		count++;
 	}
-}
-
-void	print_exit(void)
-{
-	ft_putstr_fd("Error\n", 2);
-	exit(EXIT_FAILURE);
-}
-
-void	exit_error(t_stack *stack)
-{
-	if (stack)
-		free_stack(stack);
-	print_exit();
+	if (num > 9)
+	{
+		count += ft_printnum(num / 10);
+		count += ft_printnum(num % 10);
+	}
+	else
+	{
+		c = num + '0';
+		write(1, &c, 1);
+		count++;
+	}
+	return (count);
 }

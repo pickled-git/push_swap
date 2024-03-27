@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_exit.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/22 18:32:25 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/03/27 11:16:58 by oprosvir         ###   ########.fr       */
+/*   Created: 2023/05/13 00:43:38 by oprosvir          #+#    #+#             */
+/*   Updated: 2024/03/04 12:32:18 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "push_swap.h"
 
-void	free_stack(t_stack *stack)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	t_stack	*tmp;
+	size_t	src_len;
 
-	while (stack)
+	src_len = ft_strlen(src);
+	if (src_len + 1 < size)
 	{
-		tmp = stack;
-		stack = stack->next;
-		free(tmp);
+		ft_memcpy(dst, src, src_len + 1);
 	}
-}
-
-void	print_exit(void)
-{
-	ft_putstr_fd("Error\n", 2);
-	exit(EXIT_FAILURE);
-}
-
-void	exit_error(t_stack *stack)
-{
-	if (stack)
-		free_stack(stack);
-	print_exit();
+	else if (size != 0)
+	{
+		ft_memcpy(dst, src, size - 1);
+		dst[size - 1] = '\0';
+	}
+	return (src_len);
 }

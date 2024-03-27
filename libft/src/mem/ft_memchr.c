@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_exit.c                                       :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/22 18:32:25 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/03/27 11:16:58 by oprosvir         ###   ########.fr       */
+/*   Created: 2023/05/22 20:40:48 by oprosvir          #+#    #+#             */
+/*   Updated: 2023/06/12 18:00:13 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "push_swap.h"
+#include <stddef.h>
 
-void	free_stack(t_stack *stack)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	t_stack	*tmp;
+	const unsigned char	*ptr;
 
-	while (stack)
+	ptr = (const unsigned char *)s;
+	while (n-- > 0)
 	{
-		tmp = stack;
-		stack = stack->next;
-		free(tmp);
+		if (*ptr != (unsigned char)c)
+			ptr++;
+		else
+			return ((void *)ptr);
 	}
-}
-
-void	print_exit(void)
-{
-	ft_putstr_fd("Error\n", 2);
-	exit(EXIT_FAILURE);
-}
-
-void	exit_error(t_stack *stack)
-{
-	if (stack)
-		free_stack(stack);
-	print_exit();
+	return (NULL);
 }

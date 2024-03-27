@@ -6,11 +6,12 @@
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 22:44:47 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/03/22 18:50:53 by oprosvir         ###   ########.fr       */
+/*   Updated: 2024/03/27 11:22:08 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
+#include "push_swap.h"
 
 t_stack	*stack_new_node(int content)
 {
@@ -40,7 +41,7 @@ int	parse_arg(const char *str, int *error)
 
 	res = 0;
 	sign = 1;
-	while ((*str >= 9 && *str <= 13) || *str == 32)		// Пропускаем пробельные символы
+	while ((*str >= 9 && *str <= 13) || *str == 32)
 		str++;
 	if (*str == '-' || *str == '+') // Обработка знака
 	{
@@ -51,7 +52,7 @@ int	parse_arg(const char *str, int *error)
 	while (*str >= '0' && *str <= '9') // Преобразование строки в число
 	{
 		res = res * 10 + (*str - '0');
-		if (res > INT_MAX || (sign == -1 && -res < INT_MIN)) // Проверка на пределы int
+		if (res > INT_MAX || (sign == -1 && -res < INT_MIN))
 		{
 			*error = 1;
 			return (0); // Немедленный выход из функции после установки ошибки
@@ -64,11 +65,4 @@ int	parse_arg(const char *str, int *error)
 		return (0); // Немедленный выход из функции после установки ошибки
 	}
 	return ((int)(res * sign));
-}
-
-void	ft_putstr_fd(char *s, int fd) //из libft, убрать
-{
-	if (s)
-		while (*s)
-			write(fd, s++, 1);
 }

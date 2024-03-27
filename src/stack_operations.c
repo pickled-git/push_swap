@@ -6,11 +6,12 @@
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 18:34:36 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/03/20 19:35:43 by oprosvir         ###   ########.fr       */
+/*   Updated: 2024/03/27 11:16:28 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
+#include "push_swap.h"
 
 // Implement stack operations here
 void	push(t_stack **stack, int value)

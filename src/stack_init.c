@@ -6,11 +6,12 @@
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 22:43:06 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/03/22 18:47:21 by oprosvir         ###   ########.fr       */
+/*   Updated: 2024/03/27 11:16:45 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
+#include "push_swap.h"
 
 int	is_sorted(t_stack *stack)
 {

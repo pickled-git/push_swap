@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_exit.c                                       :+:      :+:    :+:   */
+/*   ft_printhex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/22 18:32:25 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/03/27 11:16:58 by oprosvir         ###   ########.fr       */
+/*   Created: 2023/07/07 12:43:54 by oprosvir          #+#    #+#             */
+/*   Updated: 2024/03/04 12:29:38 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "push_swap.h"
 
-void	free_stack(t_stack *stack)
+int	ft_printhex(unsigned int num, bool isCapital)
 {
-	t_stack	*tmp;
+	char	*base_hex;
+	int		count;
 
-	while (stack)
+	count = 0;
+	if (isCapital)
+		base_hex = "0123456789ABCDEF";
+	else
+		base_hex = "0123456789abcdef";
+	if (num >= 16)
 	{
-		tmp = stack;
-		stack = stack->next;
-		free(tmp);
+		count += ft_printhex(num / 16, isCapital);
 	}
-}
-
-void	print_exit(void)
-{
-	ft_putstr_fd("Error\n", 2);
-	exit(EXIT_FAILURE);
-}
-
-void	exit_error(t_stack *stack)
-{
-	if (stack)
-		free_stack(stack);
-	print_exit();
+	count += ft_printchar(base_hex[num % 16]);
+	return (count);
 }

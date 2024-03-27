@@ -1,39 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_exit.c                                       :+:      :+:    :+:   */
+/*   ft_printptr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/22 18:32:25 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/03/27 11:16:58 by oprosvir         ###   ########.fr       */
+/*   Created: 2023/07/07 15:10:54 by oprosvir          #+#    #+#             */
+/*   Updated: 2024/03/04 12:29:53 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "push_swap.h"
 
-void	free_stack(t_stack *stack)
+static int	ft_printhexp(unsigned long long num)
 {
-	t_stack	*tmp;
+	char	*base_hex;
+	int		count;
 
-	while (stack)
+	count = 0;
+	base_hex = "0123456789abcdef";
+	if (num >= 16)
 	{
-		tmp = stack;
-		stack = stack->next;
-		free(tmp);
+		count += ft_printhexp(num / 16);
 	}
+	count += ft_printchar(base_hex[num % 16]);
+	return (count);
 }
 
-void	print_exit(void)
+int	ft_printptr(unsigned long long num)
 {
-	ft_putstr_fd("Error\n", 2);
-	exit(EXIT_FAILURE);
-}
+	int	count;
 
-void	exit_error(t_stack *stack)
-{
-	if (stack)
-		free_stack(stack);
-	print_exit();
+	if (!num)
+		return (ft_printstr("(nil)"));
+	else
+	{
+		count = ft_printstr("0x");
+		count += ft_printhexp(num);
+		return (count);
+	}
 }
