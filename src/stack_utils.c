@@ -6,7 +6,7 @@
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 22:44:47 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/03/27 11:22:08 by oprosvir         ###   ########.fr       */
+/*   Updated: 2024/03/27 22:14:57 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	parse_arg(const char *str, int *error)
 	sign = 1;
 	while ((*str >= 9 && *str <= 13) || *str == 32)
 		str++;
-	if (*str == '-' || *str == '+') // Обработка знака
+	if (*str == '-' || *str == '+')
 	{
 		if (*str == '-')
 			sign = -1;
@@ -52,7 +52,7 @@ int	parse_arg(const char *str, int *error)
 	while (*str >= '0' && *str <= '9') // Преобразование строки в число
 	{
 		res = res * 10 + (*str - '0');
-		if (res > INT_MAX || (sign == -1 && -res < INT_MIN))
+		if ((sign == 1 && res > INT_MAX) || (sign == -1 && -res < INT_MIN))
 		{
 			*error = 1;
 			return (0); // Немедленный выход из функции после установки ошибки
