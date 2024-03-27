@@ -6,14 +6,14 @@
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 22:43:06 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/03/27 22:09:18 by oprosvir         ###   ########.fr       */
+/*   Updated: 2024/03/27 22:22:40 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-int	has_duplicate(t_stack *stack, int value)
+static int	has_duplicate(t_stack *stack, int value)
 {
 	while (stack != NULL)
 	{
@@ -24,7 +24,7 @@ int	has_duplicate(t_stack *stack, int value)
 	return (0);
 }
 
-void	add_number_to_stack(t_stack **stack, const char *str)
+static void	add_number_to_stack(t_stack **stack, const char *str)
 {
 	int		value;
 	int		error;
@@ -40,7 +40,7 @@ void	add_number_to_stack(t_stack **stack, const char *str)
 	stack_add_top(stack, new_node);
 }
 
-void	fill_stack_from_string(t_stack **stack, char *str)
+static void	fill_stack_from_string(t_stack **stack, char *str)
 {
 	char	**numbers;
 	int		i;
