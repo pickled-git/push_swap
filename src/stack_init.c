@@ -6,7 +6,7 @@
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 22:43:06 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/03/28 01:30:27 by oprosvir         ###   ########.fr       */
+/*   Updated: 2024/03/28 17:32:02 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,11 @@ static void	fill_stack_from_string(t_stack **stack, char *str)
 	{
 		i--;
 		if (add_number_to_stack(stack, numbers[i]) == -1)
+		{
+			free(numbers[i]);
+			numbers[i] = NULL;
 			exit_cleanup(*stack, numbers);
+		}
 		free(numbers[i]);
 	}
 	free(numbers);

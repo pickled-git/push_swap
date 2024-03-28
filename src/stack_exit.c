@@ -6,7 +6,7 @@
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 18:32:25 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/03/28 01:21:13 by oprosvir         ###   ########.fr       */
+/*   Updated: 2024/03/28 22:31:43 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,12 @@ void	exit_cleanup(t_stack *stack, char **numbers)
 		while (numbers[i])
 		{
 			free(numbers[i]);
+			numbers[i] = NULL;
 			i++;
 		}
 		free(numbers);
 	}
-	if (stack)
-		free_stack(stack);
-	print_exit();
+	exit_error(stack);
 }
 
 void	exit_error(t_stack *stack)
