@@ -6,7 +6,7 @@
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 18:32:25 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/03/27 11:16:58 by oprosvir         ###   ########.fr       */
+/*   Updated: 2024/03/28 01:21:13 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,25 @@ void	print_exit(void)
 {
 	ft_putstr_fd("Error\n", 2);
 	exit(EXIT_FAILURE);
+}
+
+void	exit_cleanup(t_stack *stack, char **numbers)
+{
+	int	i;
+
+	i = 0;
+	if (numbers)
+	{
+		while (numbers[i])
+		{
+			free(numbers[i]);
+			i++;
+		}
+		free(numbers);
+	}
+	if (stack)
+		free_stack(stack);
+	print_exit();
 }
 
 void	exit_error(t_stack *stack)

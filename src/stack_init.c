@@ -6,7 +6,7 @@
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 22:43:06 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/03/27 22:22:40 by oprosvir         ###   ########.fr       */
+/*   Updated: 2024/03/28 01:30:27 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ static int	has_duplicate(t_stack *stack, int value)
 	return (0);
 }
 
-static void	add_number_to_stack(t_stack **stack, const char *str)
+// Возвращает 0, если все хорошо, и -1 в случае ошибки.
+static int	add_number_to_stack(t_stack **stack, const char *str)
 {
 	int		value;
 	int		error;
@@ -33,11 +34,12 @@ static void	add_number_to_stack(t_stack **stack, const char *str)
 	error = 0;
 	value = parse_arg(str, &error);
 	if (error || has_duplicate(*stack, value))
-		exit_error(*stack);
+		return (-1);
 	new_node = stack_new_node(value);
 	if (!new_node)
-		exit_error(*stack);
+		return (-1);
 	stack_add_top(stack, new_node);
+	return (0);
 }
 
 static void	fill_stack_from_string(t_stack **stack, char *str)
@@ -46,13 +48,16 @@ static void	fill_stack_from_string(t_stack **stack, char *str)
 	int		i;
 
 	numbers = ft_split(str, ' ');
+	if (!numbers)
+		exit_error(*stack);
 	i = 0;
 	while (numbers[i] != NULL)
 		i++;
 	while (i > 0)
 	{
 		i--;
-		add_number_to_stack(stack, numbers[i]);
+		if (add_number_to_stack(stack, numbers[i]) == -1)
+			exit_cleanup(*stack, numbers);
 		free(numbers[i]);
 	}
 	free(numbers);
@@ -71,7 +76,8 @@ t_stack	*init_stack(int argc, char *argv[])
 		i = argc - 1;
 		while (i > 0)
 		{
-			add_number_to_stack(&stack, argv[i]);
+			if (add_number_to_stack(&stack, argv[i]) == -1)
+				exit_error(stack);
 			i--;
 		}
 	}
