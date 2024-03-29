@@ -6,7 +6,7 @@
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 22:44:47 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/03/27 22:14:57 by oprosvir         ###   ########.fr       */
+/*   Updated: 2024/03/29 11:53:24 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,15 @@ void	stack_add_top(t_stack **lst, t_stack *new_node)
 		new_node->next = *lst;
 		*lst = new_node;
 	}
+}
+
+t_stack	*stack_get_last(t_stack *lst)
+{
+	if (lst == NULL)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }
 
 int	parse_arg(const char *str, int *error)
