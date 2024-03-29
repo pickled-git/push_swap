@@ -4,7 +4,7 @@ SRCDIR	= src
 INCDIR	= include
 
 SRC		= 	main.c stack_exit.c stack_init.c stack_utils.c \
-			swap.c push.c rotate.c reverse_rotate.c
+			swap.c push.c rotate.c reverse_rotate.c sort.c
 SRCS	= $(addprefix $(SRCDIR)/, $(SRC))
 OBJS	= $(SRCS:.c=.o)
 

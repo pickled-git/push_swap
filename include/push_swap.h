@@ -6,7 +6,7 @@
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 22:13:00 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/03/29 13:00:22 by oprosvir         ###   ########.fr       */
+/*   Updated: 2024/03/29 15:42:12 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ void				rr(t_stack **stack_a, t_stack **stack_b);
 void				rra(t_stack **stack_a);
 void				rrb(t_stack **stack_b);
 void				rrr(t_stack **stack_a, t_stack **stack_b);
+void				sort_stack(t_stack **stack_a);
 int					is_sorted(t_stack *stack);
 int					parse_arg(const char *str, int *error);
+int					stack_size(t_stack *stack);
 
 #endif

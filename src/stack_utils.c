@@ -6,7 +6,7 @@
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 22:44:47 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/03/29 11:53:24 by oprosvir         ###   ########.fr       */
+/*   Updated: 2024/03/29 15:43:54 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,19 @@ t_stack	*stack_get_last(t_stack *lst)
 	while (lst->next)
 		lst = lst->next;
 	return (lst);
+}
+
+int	stack_size(t_stack *stack)
+{
+	int	count;
+
+	count = 0;
+	while (stack)
+	{
+		stack = stack->next;
+		count++;
+	}
+	return (count);
 }
 
 int	parse_arg(const char *str, int *error)
