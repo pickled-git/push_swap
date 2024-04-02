@@ -3,8 +3,9 @@ NAME	= push_swap
 SRCDIR	= src
 INCDIR	= include
 
-SRC		= 	main.c stack_exit.c stack_init.c stack_utils.c \
-			swap.c push.c rotate.c reverse_rotate.c sort.c
+SRC		= 	main.c stack/stack_exit.c stack/stack_init.c stack/stack_utils.c \
+			operations/swap.c operations/push.c operations/rotate.c \
+			operations/reverse_rotate.c sort/sort.c sort/assign_indexes.c  
 SRCS	= $(addprefix $(SRCDIR)/, $(SRC))
 OBJS	= $(SRCS:.c=.o)
 
@@ -38,3 +39,33 @@ re: fclean all
 
 
 .PHONY: all clean fclean re
+
+test2:				$(NAME)	
+					$(eval ARG = $(shell shuf -i 0-100 -n 2))
+					./push_swap $(ARG) | ./checker_linux $(ARG)
+					@echo -n "Instructions: "
+					@./push_swap $(ARG) | wc -l
+
+test3:				$(NAME)	
+					$(eval ARG = $(shell shuf -i 0-100 -n 3))
+					./push_swap $(ARG) | ./checker_linux $(ARG)
+					@echo -n "Instructions: "
+					@./push_swap $(ARG) | wc -l
+
+test5:				$(NAME)	
+					$(eval ARG = $(shell shuf -i 0-5000 -n 5))
+					./push_swap $(ARG) | ./checker_linux $(ARG)
+					@echo -n "Instructions: "
+					@./push_swap $(ARG) | wc -l
+
+test100:			$(NAME)	
+					$(eval ARG = $(shell shuf -i 0-5000 -n 100))
+					./push_swap $(ARG) | ./checker_linux $(ARG)
+					@echo -n "Instructions: "
+					@./push_swap $(ARG) | wc -l
+
+test500:			$(NAME)	
+					$(eval ARG = $(shell shuf -i 0-5000 -n 500))
+					./push_swap $(ARG) | ./checker_linux $(ARG)
+					@echo -n "Instructions: "
+					@./push_swap $(ARG) | wc -l

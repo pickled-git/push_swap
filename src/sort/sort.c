@@ -6,7 +6,7 @@
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 15:19:11 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/03/29 17:15:07 by oprosvir         ###   ########.fr       */
+/*   Updated: 2024/04/02 02:43:27 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,9 @@ void	sort_stack(t_stack **stack_a)
 		sa(stack_a);
 	else if (size == 3)
 		sort_three(stack_a);
-	/*	else if (size <= 100)
-		{
-			// Использовать быструю сортировку или сортировку слиянием для больших наборов
-			quick_sort(stack_a, stack_b);
-		}
-		else
-		{
-			// Для очень больших наборов данных (более 100 элементов)
-			// Можно использовать более сложный алгоритм или комбинацию алгоритмов
-			advanced_sort(stack_a, stack_b);
-		}
-	}*/
+	else
+	{
+		assign_indexes(stack_a);
+	}
 	free_stack(stack_b);
 }
