@@ -6,7 +6,7 @@
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 15:19:11 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/04/04 23:21:55 by oprosvir         ###   ########.fr       */
+/*   Updated: 2024/04/19 09:33:42 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ void	sort_stack(t_stack **stack_a)
 	else
 	{
 		assign_indexes(stack_a);
+		advance_sort(stack_a, &stack_b);
 	}
 	free_stack(stack_b);
 }
