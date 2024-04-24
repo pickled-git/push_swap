@@ -6,7 +6,7 @@
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 22:13:00 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/04/24 21:19:24 by oprosvir         ###   ########.fr       */
+/*   Updated: 2024/04/24 23:03:24 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 typedef struct s_stack
 {
 	int				value;
-	int				index;
 	struct s_stack	*next;
 }					t_stack;
 
@@ -42,15 +41,15 @@ void				rra(t_stack **stack_a);
 void				rrb(t_stack **stack_b);
 void				rrr(t_stack **stack_a, t_stack **stack_b);
 void				sort_stack(t_stack **stack_a);
-void				assign_indexes(t_stack **stack_a);
 void				advance_sort(t_stack **a, t_stack **b);
 void				print_stack(t_stack *stack); //del
-void				print_stack_i(t_stack *stack); //del
 int					is_sorted(t_stack *stack);
 int					parse_arg(const char *str, int *error);
 int					stack_size(t_stack *stack);
 int					max_value(t_stack *stack); //new
 int					min_value(t_stack *stack); //new
 int					calculate_cost(t_stack *a, t_stack *b, int value); // new
+int					find_position(t_stack *b, int value);
+int					find_index(t_stack *stack, int value);
 
 #endif

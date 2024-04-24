@@ -6,26 +6,13 @@
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 19:53:28 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/04/24 20:57:44 by oprosvir         ###   ########.fr       */
+/*   Updated: 2024/04/24 22:29:48 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	find_index(t_stack *stack, int value)
-{
-	int	i;
-
-	i = 0;
-	while (stack->value != value)
-	{
-		i++;
-		stack = stack->next;
-	}
-	return (i);
-}
-
-static int	find_position(t_stack *b, int value)
+int	find_position(t_stack *b, int value)
 {
 	t_stack	*tmp;
 	int		pos;

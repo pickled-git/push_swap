@@ -6,7 +6,7 @@
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 15:19:11 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/04/22 23:50:30 by oprosvir         ###   ########.fr       */
+/*   Updated: 2024/04/24 22:28:07 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,9 @@ void	simple_sort(t_stack **a, t_stack **b)
 		push_min_to_b(a, b);
 		size--;
 	}
-	sort_three(a); // Сортировка трех оставшихся элементов в стеке 'a'
+	sort_three(a);
 	while (*b)
-		pa(a, b); // Перемещаем элементы обратно в 'a'
+		pa(a, b);
 }
 
 void	sort_stack(t_stack **stack_a)
@@ -109,10 +109,6 @@ void	sort_stack(t_stack **stack_a)
 	else if (size <= 5)
 		simple_sort(stack_a, &stack_b);
 	else
-	{
-		assign_indexes(stack_a);
 		advance_sort(stack_a, &stack_b);
-		print_stack(stack_b);
-	}
 	free_stack(stack_b);
 }

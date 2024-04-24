@@ -6,7 +6,7 @@
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 22:14:51 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/04/18 21:07:09 by oprosvir         ###   ########.fr       */
+/*   Updated: 2024/04/24 22:57:54 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,6 @@ void	print_stack(t_stack *stack)
 		printf("%d\n", stack->value);
 		stack = stack->next;
 	}
-}
-
-void print_stack_i(t_stack *stack)
-{
-    while (stack != NULL)
-    {
-        printf("Value: %d, Index: %d\n", stack->value, stack->index);
-        stack = stack->next;
-    }
 }
 
 int	is_sorted(t_stack *stack)
@@ -51,8 +42,8 @@ int	main(int argc, char *argv[])
 	stack_a = init_stack(argc, argv);
 	if (stack_a && !is_sorted(stack_a))
 		sort_stack(&stack_a);
-	printf("Stack A:\n");
-	print_stack_i(stack_a);
+//	printf("Stack A:\n");
+//	print_stack(stack_a);
 	free_stack(stack_a);
 	return (0);
 }

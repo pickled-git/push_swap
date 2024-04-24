@@ -6,7 +6,7 @@
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 00:08:59 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/04/24 21:15:34 by oprosvir         ###   ########.fr       */
+/*   Updated: 2024/04/24 22:56:42 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,27 @@ void	push_to_b(t_stack **a, t_stack **b)
 		rb(b);
 }
 
+void	rotate_to_min(t_stack **a)
+{
+	int	min_val;
+	int	pos_in_a;
+	int	size;
+
+	min_val = min_value(*a);
+	pos_in_a = find_index(*a, min_val);
+	size = stack_size(*a);
+	if (pos_in_a <= size / 2)
+	{
+		while ((*a)->value != min_val)
+			ra(a);
+	}
+	else
+	{
+		while ((*a)->value != min_val)
+			rra(a);
+	}
+}
+
 t_stack	*find_elem(t_stack *a, t_stack *b)
 {
 	t_stack	*min_cost_elem;
@@ -34,11 +55,11 @@ t_stack	*find_elem(t_stack *a, t_stack *b)
 	int		cost;
 
 	min_cost_elem = NULL;
+	min_cost = INT_MAX;
 	current = a;
 	while (current)
 	{
 		cost = calculate_cost(a, b, current->value);
-        printf("%d\n", cost); //отладка
 		if (cost < min_cost)
 		{
 			min_cost = cost;
@@ -49,47 +70,44 @@ t_stack	*find_elem(t_stack *a, t_stack *b)
 	return (min_cost_elem);
 }
 
-/* TODO: fix func
+void	perform_rotations(t_stack **stack, int pos)
+{
+	int	size;
+	int	forward_rotations;
+	int	reverse_rotations;
 
-void	perform_rotations(t_stack **a, t_stack *min_cost_elem) {
-	int forward_rotations = 0;
-	int reverse_rotations = 0;
-	int index = 0;
-	t_stack *current = *a;
-
-	// Находим индекс min_cost_elem в стеке a
-	while (current != NULL && current != min_cost_elem) {
-		index++;
-		current = current->next;
+	size = stack_size(*stack);
+	forward_rotations = pos;
+	reverse_rotations = size - pos;
+	if (forward_rotations <= reverse_rotations)
+	{
+		for (int i = 0; i < forward_rotations; i++)
+			ra(stack);
 	}
-
-	int size = stack_size(*a);
-	forward_rotations = index;  // Прямые ротации до верха
-	reverse_rotations = size - index;  // Обратные ротации до верха
-
-	if (forward_rotations <= reverse_rotations) {
-		// Выполнение прямых ротаций
-		while ((*a) != min_cost_elem) {
-			ra(a);  // Прямая ротация
-		}
-	} else {
-		// Выполнение обратных ротаций
-		while ((*a) != min_cost_elem) {
-			rra(a);  // Обратная ротация
-		}
+	else
+	{
+		for (int i = 0; i < reverse_rotations; i++)
+			rra(stack);
 	}
-} */
+}
 
 void	advance_sort(t_stack **a, t_stack **b)
 {
 	t_stack	*min_cost;
+	int		pos_in_a;
+	int		pos_in_b;
 
 	push_to_b(a, b);
 	while (*a)
 	{
 		min_cost = find_elem(*a, *b);
-		printf("Element for rotation: %d\n", min_cost->value);
-//		perform_rotations(a, min_cost);
-//		pb(a, b);
+		pos_in_a = find_index(*a, min_cost->value);
+		perform_rotations(a, pos_in_a);
+		pos_in_b = find_position(*b, min_cost->value);
+		perform_rotations(b, pos_in_b);
+		pb(a, b);
 	}
+	while (*b)
+		pa(a, b);
+    rotate_to_min(a);
 }
