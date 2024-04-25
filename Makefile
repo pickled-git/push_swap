@@ -6,7 +6,7 @@ INCDIR	= include
 SRC		= 	main.c stack/stack_exit.c stack/stack_init.c stack/stack_utils.c \
 			operations/swap.c operations/push.c operations/rotate.c \
 			operations/reverse_rotate.c sort/sort.c sort/advance_sort.c \
-			sort/sort_utils.c sort/calculate_cost.c 
+			sort/sort_utils.c sort/calculate_cost.c stack/parse_arg.c
 SRCS	= $(addprefix $(SRCDIR)/, $(SRC))
 OBJS	= $(SRCS:.c=.o)
 

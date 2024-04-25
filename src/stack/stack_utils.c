@@ -6,7 +6,7 @@
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 22:44:47 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/04/25 21:33:58 by oprosvir         ###   ########.fr       */
+/*   Updated: 2024/04/26 00:11:09 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,37 +54,4 @@ int	stack_size(t_stack *stack)
 		count++;
 	}
 	return (count);
-}
-
-int	parse_arg(const char *str, int *error)
-{
-	long	res;
-	int		sign;
-
-	res = 0;
-	sign = 1;
-	while ((*str >= 9 && *str <= 13) || *str == 32)
-		str++;
-	if (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-			sign = -1;
-		str++;
-	}
-	while (*str >= '0' && *str <= '9')
-	{
-		res = res * 10 + (*str - '0');
-		if ((sign == 1 && res > INT_MAX) || (sign == -1 && -res < INT_MIN))
-		{
-			*error = 1;
-			return (0); // Immediate exit after setting an error
-		}
-		str++;
-	}
-	if (*str != '\0') // Check for invalid characters after the number
-	{
-		*error = 1;
-		return (0); // Immediate exit after setting an error
-	}
-	return ((int)(res * sign));
 }
