@@ -6,7 +6,7 @@
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 22:13:00 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/04/25 15:56:32 by oprosvir         ###   ########.fr       */
+/*   Updated: 2024/04/25 21:38:49 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include <limits.h>
+# include <stdbool.h>
 # include <stdio.h>
 
 typedef struct s_stack
@@ -42,14 +43,15 @@ void				rrb(t_stack **stack_b);
 void				rrr(t_stack **stack_a, t_stack **stack_b);
 void				sort_stack(t_stack **stack_a);
 void				advance_sort(t_stack **a, t_stack **b);
-void				rotate_to_min(t_stack **a); //new
-void				print_stack(t_stack *stack); //del
+void				rotate_to_min(t_stack **a);
+void				rotate_stack(t_stack **stack, int rotations, bool is_stack_a);
+void				reverse_stack(t_stack **stack, int rotations, bool is_stack_a);
 int					is_sorted(t_stack *stack);
 int					parse_arg(const char *str, int *error);
 int					stack_size(t_stack *stack);
-int					max_value(t_stack *stack); //new
-int					min_value(t_stack *stack); //new
-int					calculate_cost(t_stack *a, t_stack *b, int value); // new
+int					max_value(t_stack *stack);
+int					min_value(t_stack *stack);
+int					calculate_cost(t_stack *a, t_stack *b, int value);
 int					find_position(t_stack *b, int value);
 int					find_index(t_stack *stack, int value);
 

@@ -6,7 +6,7 @@
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 22:43:06 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/03/28 17:32:02 by oprosvir         ###   ########.fr       */
+/*   Updated: 2024/04/25 21:32:19 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	has_duplicate(t_stack *stack, int value)
 	return (0);
 }
 
-// Возвращает 0, если все хорошо, и -1 в случае ошибки.
+// Returns -1 in case of an error
 static int	add_number_to_stack(t_stack **stack, const char *str)
 {
 	int		value;

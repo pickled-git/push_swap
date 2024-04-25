@@ -6,7 +6,7 @@
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 11:14:43 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/03/29 12:53:30 by oprosvir         ###   ########.fr       */
+/*   Updated: 2024/04/25 16:21:18 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,12 @@ static void	push(t_stack **src_stack, t_stack **dest_stack)
 	*dest_stack = first;
 }
 
-// из стека b в стек a.
 void	pa(t_stack **stack_a, t_stack **stack_b)
 {
 	push(stack_b, stack_a);
 	ft_putstr_fd("pa\n", 1);
 }
 
-// из стека a в стек b.
 void	pb(t_stack **stack_a, t_stack **stack_b)
 {
 	push(stack_a, stack_b);

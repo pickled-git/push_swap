@@ -6,7 +6,7 @@
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 00:08:59 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/04/25 16:01:33 by oprosvir         ###   ########.fr       */
+/*   Updated: 2024/04/25 21:38:04 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_stack	*find_elem(t_stack *a, t_stack *b)
 	return (min_cost_elem);
 }
 
-void	perform_rotations(t_stack **stack, int pos)
+void	perform_rotations(t_stack **stack, int pos, bool is_stack_a)
 {
 	int	size;
 	int	forward_rotations;
@@ -59,21 +59,9 @@ void	perform_rotations(t_stack **stack, int pos)
 	forward_rotations = pos;
 	reverse_rotations = size - pos;
 	if (forward_rotations <= reverse_rotations)
-	{
-		while (forward_rotations > 0)
-		{
-			ra(stack);
-			forward_rotations--;
-		}
-	}
+		rotate_stack(stack, forward_rotations, is_stack_a);
 	else
-	{
-		while (reverse_rotations > 0)
-		{
-			rra(stack);
-			reverse_rotations--;
-		}
-	}
+		reverse_stack(stack, reverse_rotations, is_stack_a);
 }
 
 void	advance_sort(t_stack **a, t_stack **b)
@@ -87,14 +75,12 @@ void	advance_sort(t_stack **a, t_stack **b)
 	{
 		min_cost = find_elem(*a, *b);
 		pos_in_a = find_index(*a, min_cost->value);
-		perform_rotations(a, pos_in_a);
+		perform_rotations(a, pos_in_a, true);
 		pos_in_b = find_position(*b, min_cost->value);
-		perform_rotations(b, pos_in_b);
+		perform_rotations(b, pos_in_b, false);
 		pb(a, b);
 	}
 	while (*b)
 		pa(a, b);
-	printf("Stack b after push: \n");
-	print_stack(*b);
 	rotate_to_min(a);
 }
