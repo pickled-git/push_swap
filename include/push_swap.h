@@ -6,7 +6,7 @@
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 22:13:00 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/04/24 23:03:24 by oprosvir         ###   ########.fr       */
+/*   Updated: 2024/04/25 15:56:32 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void				rrb(t_stack **stack_b);
 void				rrr(t_stack **stack_a, t_stack **stack_b);
 void				sort_stack(t_stack **stack_a);
 void				advance_sort(t_stack **a, t_stack **b);
+void				rotate_to_min(t_stack **a); //new
 void				print_stack(t_stack *stack); //del
 int					is_sorted(t_stack *stack);
 int					parse_arg(const char *str, int *error);
