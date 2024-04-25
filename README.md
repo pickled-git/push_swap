@@ -4,14 +4,17 @@ FINAL GRADE: -/100
 ```
 - C Programming
 - Stack
-- Sorting Algorithms
 
 **Project goal:** Design and implement a program in C to sort a stack of integers using a limited set of operations in the most efficient way possible.
 
 ### Mandatory
 
-The objective of this project is to create a program named **`push_swap`**, which will sort numbers into stack **`a`** using the least possible number of operations. This will be done with two stacks (**`a`** and **`b`**) and a set of instructions to manipulate both stacks. The project emphasizes the implementation and optimization of sorting algorithms and understanding the algorithmic complexity in C programming.
+The objective of this project is to create a program, which will sort numbers into stack **`a`** using the least possible number of operations. This will be done with two stacks (**`a`** and **`b`**) and a set of instructions to manipulate both stacks.
 
+The sorting result will be checked using a special program called `checker_OS`, which will confirm whether the output of your program correctly sorted the stack.
+
+* For a minimalist validation (`80/100`), you must be able to sort 100 random numbers in fewer than 700 operations.
+  
 | Program name | push_swap |
 |:--- |:---|
 | Turn in files | Makefile, *.h, *.c |
@@ -24,5 +27,9 @@ The objective of this project is to create a program named **`push_swap`**, whic
 
 ### Bonus
 
-- Improve the efficiency of the sorting algorithm to handle larger sets of numbers with fewer operations.
-- Develop a checker program that will verify the sequence of operations applied to sort the stack effectively.
+* For maximal project validation, for 500 random numbers, there should be no more than 5500 operations.
+* Develop your own `checker` program that will verify the sequence of operations applied to sort the stack.
+
+You can visualize algorithm in action with [O-reo's push_swap visualizer](https://github.com/o-reo/push_swap_visualizer).
+
+Subject version: 8.
