@@ -6,7 +6,7 @@
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 23:58:32 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/04/26 00:31:35 by oprosvir         ###   ########.fr       */
+/*   Updated: 2024/04/26 00:44:00 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static int	has_extra_characters(const char *str)
 	return (*str != '\0');
 }
 
-static int	parse_arg(const char *str, int *error)
+int	parse_arg(const char *str, int *error)
 {
 	int		sign;
 	long	res;
