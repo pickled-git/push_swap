@@ -6,7 +6,7 @@
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 22:13:00 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/04/25 21:38:49 by oprosvir         ###   ########.fr       */
+/*   Updated: 2024/04/26 19:54:52 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ void				rrr(t_stack **stack_a, t_stack **stack_b);
 void				sort_stack(t_stack **stack_a);
 void				advance_sort(t_stack **a, t_stack **b);
 void				rotate_to_min(t_stack **a);
-void				rotate_stack(t_stack **stack, int rotations, bool is_stack_a);
-void				reverse_stack(t_stack **stack, int rotations, bool is_stack_a);
 int					is_sorted(t_stack *stack);
 int					parse_arg(const char *str, int *error);
 int					stack_size(t_stack *stack);
 int					max_value(t_stack *stack);
 int					min_value(t_stack *stack);
 int					calculate_cost(t_stack *a, t_stack *b, int value);
+int					rotation_cost(int size, int pos);
+int					ft_abs(int num);
 int					find_position(t_stack *b, int value);
 int					find_index(t_stack *stack, int value);
 

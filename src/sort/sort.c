@@ -6,7 +6,7 @@
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 15:19:11 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/04/25 15:59:25 by oprosvir         ###   ########.fr       */
+/*   Updated: 2024/04/26 17:32:48 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,27 @@ void	sort_three(t_stack **a)
 	{
 		sa(a);
 		ra(a);
+	}
+}
+
+void	rotate_to_min(t_stack **a)
+{
+	int	min_val;
+	int	pos_in_a;
+	int	size;
+
+	min_val = min_value(*a);
+	pos_in_a = find_index(*a, min_val);
+	size = stack_size(*a);
+	if (pos_in_a <= size / 2)
+	{
+		while ((*a)->value != min_val)
+			ra(a);
+	}
+	else
+	{
+		while ((*a)->value != min_val)
+			rra(a);
 	}
 }
 

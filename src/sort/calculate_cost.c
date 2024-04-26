@@ -6,7 +6,7 @@
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 19:53:28 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/04/24 22:29:48 by oprosvir         ###   ########.fr       */
+/*   Updated: 2024/04/26 19:57:51 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,29 +35,64 @@ int	find_position(t_stack *b, int value)
 	return (pos);
 }
 
-static int	rotation_cost(int size, int pos)
+static int	rotate_cost(int *cost_a, int *cost_b)
 {
-	int	forward;
-	int	reverse;
+	int	total;
 
-	forward = pos;
-	reverse = size - pos;
-	if (forward < reverse)
-		return (forward);
+	total = 0;
+	while (*cost_a > 0 && *cost_b > 0)
+	{
+		(*cost_a)--;
+		(*cost_b)--;
+		total++;
+	}
+	return (total);
+}
+
+static int	reverse_rotate_cost(int *cost_a, int *cost_b)
+{
+	int	total;
+
+	total = 0;
+	while (*cost_a < 0 && *cost_b < 0)
+	{
+		(*cost_a)++;
+		(*cost_b)++;
+		total++;
+	}
+	return (total);
+}
+
+static int	combined_rotation_cost(int cost_a, int cost_b)
+{
+	int	total_cost;
+
+	total_cost = 0;
+	if (cost_a > 0 && cost_b > 0)
+	{
+		total_cost = rotate_cost(&cost_a, &cost_b);
+		total_cost += cost_a + cost_b;
+	}
+	else if (cost_a < 0 && cost_b < 0)
+	{
+		total_cost = reverse_rotate_cost(&cost_a, &cost_b);
+		total_cost += ft_abs(cost_a) + ft_abs(cost_b);
+	}
 	else
-		return (reverse);
+		total_cost = ft_abs(cost_a) + ft_abs(cost_b);
+	return (total_cost);
 }
 
 int	calculate_cost(t_stack *a, t_stack *b, int value)
 {
-	int b_pos;
-	int b_rotations;
-	int a_index;
-	int a_rotations;
+	int	pos_b;
+	int	pos_a;
+	int	cost_b;
+	int	cost_a;
 
-	b_pos = find_position(b, value);
-	b_rotations = rotation_cost(stack_size(b), b_pos);
-	a_index = find_index(a, value);
-	a_rotations = rotation_cost(stack_size(a), a_index);
-	return (a_rotations + b_rotations);
+	pos_b = find_position(b, value);
+	pos_a = find_index(a, value);
+	cost_b = rotation_cost(stack_size(b), pos_b);
+	cost_a = rotation_cost(stack_size(a), pos_a);
+	return (combined_rotation_cost(cost_a, cost_b));
 }

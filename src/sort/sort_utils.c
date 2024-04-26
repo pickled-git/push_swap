@@ -6,31 +6,30 @@
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 12:20:46 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/04/25 15:57:47 by oprosvir         ###   ########.fr       */
+/*   Updated: 2024/04/26 17:26:59 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rotate_to_min(t_stack **a)
+int	ft_abs(int num)
 {
-	int	min_val;
-	int	pos_in_a;
-	int	size;
+	if (num < 0)
+		return (-num);
+	return (num);
+}
 
-	min_val = min_value(*a);
-	pos_in_a = find_index(*a, min_val);
-	size = stack_size(*a);
-	if (pos_in_a <= size / 2)
-	{
-		while ((*a)->value != min_val)
-			ra(a);
-	}
+int	rotation_cost(int size, int pos)
+{
+	int	forward;
+	int	reverse;
+
+	forward = pos;
+	reverse = size - pos;
+	if (forward <= reverse)
+		return (forward);
 	else
-	{
-		while ((*a)->value != min_val)
-			rra(a);
-	}
+		return (-reverse);
 }
 
 int	find_index(t_stack *stack, int value)
