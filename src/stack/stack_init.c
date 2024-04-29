@@ -6,7 +6,7 @@
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 22:43:06 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/04/29 18:18:54 by oprosvir         ###   ########.fr       */
+/*   Updated: 2024/04/29 18:44:09 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ t_stack	*init_stack(int argc, char *argv[])
 	if (argc == 2)
 	{
 		if (argv[1] == NULL || *trim_whitespace(argv[1]) == '\0')
-            exit_error(stack);
+			exit_error(stack);
 		fill_stack_from_string(&stack, argv[1]);
 	}
 	else

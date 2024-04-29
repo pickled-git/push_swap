@@ -6,7 +6,7 @@
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 23:58:32 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/04/29 18:16:32 by oprosvir         ###   ########.fr       */
+/*   Updated: 2024/04/29 18:47:57 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static long	parse_long(const char *str, int sign, int *error)
 	while (*str >= '0' && *str <= '9')
 	{
 		res = res * 10 + (*str - '0');
-		if ((sign == 1 && res > INT_MAX) || (sign == -1 && -res < INT_MIN))
+		if ((sign == 1 && res > INT_MAX) || (sign == -1 && (-res) < INT_MIN))
 		{
 			*error = 1;
 			return (0);
@@ -44,11 +44,11 @@ static long	parse_long(const char *str, int sign, int *error)
 
 int	parse_arg(const char *str, int *error)
 {
-	long res;
-	int sign;
+	long	res;
+	int		sign;
 
 	sign = 1;
-	str = trim_whitespace(str);	
+	str = trim_whitespace(str);
 	if (*str == '-' || *str == '+')
 	{
 		if (*str == '-')

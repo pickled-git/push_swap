@@ -6,7 +6,7 @@
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 15:19:11 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/04/26 17:32:48 by oprosvir         ###   ########.fr       */
+/*   Updated: 2024/04/29 18:48:42 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ void	simple_sort(t_stack **a, t_stack **b)
 
 void	sort_stack(t_stack **stack_a)
 {
-	t_stack *stack_b;
-	int size;
+	t_stack	*stack_b;
+	int		size;
 
 	stack_b = NULL;
 	size = stack_size(*stack_a);
