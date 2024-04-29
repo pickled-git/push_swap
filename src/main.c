@@ -6,7 +6,7 @@
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 22:14:51 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/04/26 19:54:16 by oprosvir         ###   ########.fr       */
+/*   Updated: 2024/04/29 16:48:30 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ int	is_sorted(t_stack *stack)
 
 int	main(int argc, char *argv[])
 {
-	t_stack *stack_a;
+	t_stack	*stack_a;
 
 	if (argc < 2)
 		exit(EXIT_FAILURE);
 	stack_a = init_stack(argc, argv);
 	if (stack_a && !is_sorted(stack_a))
 		sort_stack(&stack_a);
-	//print_stack(stack_a);
+	// print_stack(stack_a);
 	free_stack(stack_a);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: oprosvir <oprosvir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 22:13:00 by oprosvir          #+#    #+#             */
-/*   Updated: 2024/04/26 19:54:52 by oprosvir         ###   ########.fr       */
+/*   Updated: 2024/04/29 18:17:20 by oprosvir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_stack
 	struct s_stack	*next;
 }					t_stack;
 
+const char			*trim_whitespace(const char *str);
 t_stack				*init_stack(int argc, char *argv[]);
 t_stack				*stack_new_node(int content);
 t_stack				*stack_get_last(t_stack *lst);
