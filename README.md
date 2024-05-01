@@ -1,6 +1,6 @@
 # push_swap
 ```
-FINAL GRADE: -/100
+FINAL GRADE: 100/100
 ```
 - C Programming
 - Stack
